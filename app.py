@@ -48,7 +48,7 @@ def send_file(bot, update):
     print("Uploaded file result: " + r.text)
 
     # ================================================================
-    update.message.reply_text("File received!")
+    update.message.reply_text(r.text)
 
 
 # ==============================================================================================
