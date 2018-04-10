@@ -3,6 +3,7 @@ import urllib
 from urllib.request import urlopen
 from telegram.ext import (Updater, MessageHandler, Filters)
 
+
 # ==============================================================================================
 # Receives a file from the chat
 # ==============================================================================================
@@ -39,13 +40,16 @@ def send_file(bot, update):
 
     file_temp_pathname, headers = urllib.request.urlretrieve(chat_file["file_path"])
     file = open(file_temp_pathname, 'rb')
-    files = {'file': (file_name, file),'userid':'123'}
+    files = {'file': (file_name, file)}
 
-    r = requests.post(url, files=files)
+    values = {'userid': str(user_id), 'username': username}
+
+    r = requests.post(url, files=files, data=values)
     print("Uploaded file result: " + r.text)
 
     # ================================================================
     update.message.reply_text("File received!")
+
 
 # ==============================================================================================
 # ==============================================================================================
@@ -56,5 +60,6 @@ def openshiftStart():
     dispatcher.add_handler(MessageHandler(Filters.document, send_file))
     updater.start_polling()
     updater.idle()
+
 
 openshiftStart()
