@@ -1,8 +1,7 @@
 import requests
 import urllib
 from urllib.request import urlopen
-from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, RegexHandler,
-                          ConversationHandler)
+from telegram.ext import (Updater, MessageHandler, Filters)
 
 # ==============================================================================================
 # Receives a file from the chat
