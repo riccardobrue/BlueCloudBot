@@ -42,7 +42,7 @@ def send_file(bot, update):
     file = open(file_temp_pathname, 'rb')
     files = {'file': (file_name, file)}
 
-    values = {'userid': str(user_id), 'username': username}
+    values = {'userid': str(user_id), 'name': user_first_name}
 
     r = requests.post(url, files=files, data=values)
     print("Uploaded file result: " + r.text)
