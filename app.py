@@ -34,7 +34,7 @@ def send_file(bot, update):
     elif(update.message.audio is not None):
         print("==================================E2")
         item=update.message.audio
-        file_name = item.title
+        file_name = item.file_name
         file_type = item.mime_type
         file_size = item.file_size
         print("==================================C")
