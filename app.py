@@ -22,27 +22,36 @@ def send_file(bot, update):
     file_name=None
     file_type=None
     file_size=None
+    print("==================================A")
 
     if(update.message.document is not None):
+        print("==================================E1")
         item=update.message.document
         file_name = item.file_name
         file_type = item.mime_type
         file_size = item.file_size
+        print("==================================B")
     elif(update.message.audio is not None):
+        print("==================================E2")
         item=update.message.audio
         file_name = item.title
         file_type = item.mime_type
         file_size = item.file_size
+        print("==================================C")
     elif(update.message.video is not None):
+        print("==================================E3")
         item=update.message.video
         file_name = item.file_id
         file_type = item.mime_type
         file_size = item.file_size
+        print("==================================D")
     elif(update.message.voice is not None):
+        print("==================================E4")
         item=update.message.voice
         file_name = item.file_id
         file_type = item.mime_type
         file_size = item.file_size
+        print("==================================E")
 
     print(file_name + "_" + str(file_type) + "_" + str(file_size))
 
