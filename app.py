@@ -28,27 +28,30 @@ def send_file(bot, update):
     file_type = update.message.document.mime_type
     file_size = update.message.document.file_size
 
-    print(file_name + "_" + str(file_type) + "_" + str(file_size))
+    if(file_size>20000000):
+        update.message.reply_text("File too big to be received!")
+    else:
+        print(file_name + "_" + str(file_type) + "_" + str(file_size))
 
-    chat_file = bot.get_file(update.message.document.file_id)
+        chat_file = bot.get_file(update.message.document.file_id)
 
-    # ================================================================
-    # Send a file to BlueCLoud website
-    # ================================================================
+        # ================================================================
+        # Send a file to BlueCLoud website
+        # ================================================================
 
-    url = 'http://riccardobruetesting.altervista.org/APIs/file/file_api.php'
+        url = 'http://riccardobruetesting.altervista.org/APIs/file/file_api.php'
 
-    file_temp_pathname, headers = urllib.request.urlretrieve(chat_file["file_path"])
-    file = open(file_temp_pathname, 'rb')
-    files = {'file': (file_name, file)}
+        file_temp_pathname, headers = urllib.request.urlretrieve(chat_file["file_path"])
+        file = open(file_temp_pathname, 'rb')
+        files = {'file': (file_name, file)}
 
-    values = {'userid': str(user_id), 'name': user_first_name}
+        values = {'userid': str(user_id), 'name': user_first_name}
 
-    r = requests.post(url, files=files, data=values)
-    print("Uploaded file result: " + r.text)
+        r = requests.post(url, files=files, data=values)
+        print("Uploaded file result: " + r.text)
 
-    # ================================================================
-    update.message.reply_text(r.text)
+        # ================================================================
+        update.message.reply_text(r.text)
 
 
 # ==============================================================================================
