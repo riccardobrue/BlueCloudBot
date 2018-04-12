@@ -18,9 +18,31 @@ def send_file(bot, update):
     print("User ID: " + str(user_id))
     print("==================================")
 
-    file_name = update.message.document.file_name
-    file_type = update.message.document.mime_type
-    file_size = update.message.document.file_size
+    item=None
+    file_name=None
+    file_type=None
+    file_size=None
+
+    if(update.message.document is not None):
+        item=update.message.document
+        file_name = item.file_name
+        file_type = item.mime_type
+        file_size = item.file_size
+    elif(update.message.audio is not None):
+        item=update.message.audio
+        file_name = item.title
+        file_type = item.mime_type
+        file_size = item.file_size
+    elif(update.message.video is not None):
+        item=update.message.video
+        file_name = item.file_id
+        file_type = item.mime_type
+        file_size = item.file_size
+    elif(update.message.voice is not None):
+        item=update.message.voice
+        file_name = item.file_id
+        file_type = item.mime_type
+        file_size = item.file_size
 
     print(file_name + "_" + str(file_type) + "_" + str(file_size))
 
@@ -28,7 +50,8 @@ def send_file(bot, update):
         update.message.reply_text("File too big to be received!")
     else:
 
-        chat_file = bot.get_file(update.message.document.file_id)
+        #chat_file = bot.get_file(update.message.document.file_id)
+        chat_file = bot.get_file(item.file_id)
 
         # ================================================================
         # Send a file to BlueCLoud website
