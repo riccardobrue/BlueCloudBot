@@ -32,16 +32,22 @@ def send_file(bot, update):
         item=update.message.audio
         file_name = item.file_id
         file_type = item.mime_type
+        a, b = file_type.split("/")
+        file_name=file_name+"."+b
         file_size = item.file_size
     elif(update.message.video is not None):
         item=update.message.video
         file_name = item.file_id
         file_type = item.mime_type
+        a, b = file_type.split("/")
+        file_name=file_name+"."+b
         file_size = item.file_size
     elif(update.message.voice is not None):
         item=update.message.voice
         file_name = item.file_id
         file_type = item.mime_type
+        a, b = file_type.split("/")
+        file_name=file_name+"."+b
         file_size = item.file_size
     elif(update.message.photo is not None):
         update.message.reply_text("You must send images as a file!")
