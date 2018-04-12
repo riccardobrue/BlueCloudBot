@@ -61,6 +61,11 @@ def openshiftStart():
     updater = Updater('521661539:AAHoy9AKdBccWEwsgNWKoZpAlJc33UuzROE')
     dispatcher = updater.dispatcher
     dispatcher.add_handler(MessageHandler(Filters.document, send_file))
+    dispatcher.add_handler(MessageHandler(Filters.photo, send_file))
+    dispatcher.add_handler(MessageHandler(Filters.audio, send_file))
+    dispatcher.add_handler(MessageHandler(Filters.video, send_file))
+    dispatcher.add_handler(MessageHandler(Filters.voice, send_file))
+
     updater.start_polling()
     updater.idle()
 
