@@ -8,19 +8,13 @@ from telegram.ext import (Updater, MessageHandler, Filters)
 # Receives a file from the chat
 # ==============================================================================================
 def send_file(bot, update):
-    chat_id = update.message.chat_id
     userInfo = update.message.from_user
 
     user_first_name = userInfo.first_name
-    user_second_name = userInfo.last_name
     user_id = userInfo.id
-    username = userInfo.username
 
     print("==================================")
-    print("Chat ID: " + str(chat_id))
     print("User First Name: " + user_first_name)
-    print("User Second Name: " + user_second_name)
-    print("Username: " + username)
     print("User ID: " + str(user_id))
     print("==================================")
 
