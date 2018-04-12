@@ -55,7 +55,7 @@ def send_file(bot, update):
     elif(update.message.photo is not None):
         print("==================================E4")
         item=update.message.photo
-        print(item)
+        print(item[0])
         file_name = item.file_id
         file_type = item.mime_type
         file_size = item.file_size
