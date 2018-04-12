@@ -28,10 +28,11 @@ def send_file(bot, update):
     file_type = update.message.document.mime_type
     file_size = update.message.document.file_size
 
+    print(file_name + "_" + str(file_type) + "_" + str(file_size))
+
     if(file_size>20000000):
         update.message.reply_text("File too big to be received!")
     else:
-        print(file_name + "_" + str(file_type) + "_" + str(file_size))
 
         chat_file = bot.get_file(update.message.document.file_id)
 
