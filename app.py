@@ -49,11 +49,15 @@ def send_file(bot, update):
         print("==================================E4")
         item=update.message.voice
         file_name = item.file_id
-        file_type = item.mime_type
+        file_type = "ogg"
         file_size = item.file_size
         print("==================================E")
 
-    print(file_name + "_" + str(file_type) + "_" + str(file_size))
+    print(file_name)
+    print("__")
+    print(file_type)
+    print("__")
+    print(file_size)
 
     if(file_size>20000000):
         update.message.reply_text("File too big to be received!")
