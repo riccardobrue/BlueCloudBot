@@ -53,10 +53,11 @@ def send_file(bot, update):
         update.message.reply_text("You must send images as a file!")
         return
 
+    print("_File name:")
     print(file_name)
-    print("__")
+    print("_File type:")
     print(file_type)
-    print("__")
+    print("_File size:")
     print(file_size)
 
     if(file_size>20000000):
@@ -79,7 +80,9 @@ def send_file(bot, update):
         values = {'userid': str(user_id), 'name': user_first_name}
 
         r = requests.post(url, files=files, data=values)
-        print("Uploaded file result: " + r.text)
+
+        print("__")
+        print("File upload result: " + r.text)
 
         # ================================================================
         update.message.reply_text(r.text)
